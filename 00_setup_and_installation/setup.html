@@ -1,0 +1,401 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>setup.md</title>
+<meta http-equiv="Content-type" content="text/html;charset=UTF-8">
+
+<style>
+/* https://github.com/microsoft/vscode/blob/master/extensions/markdown-language-features/media/markdown.css */
+/*---------------------------------------------------------------------------------------------
+ *  Copyright (c) Microsoft Corporation. All rights reserved.
+ *  Licensed under the MIT License. See License.txt in the project root for license information.
+ *--------------------------------------------------------------------------------------------*/
+
+body {
+	font-family: var(--vscode-markdown-font-family, -apple-system, BlinkMacSystemFont, "Segoe WPC", "Segoe UI", "Ubuntu", "Droid Sans", sans-serif);
+	font-size: var(--vscode-markdown-font-size, 14px);
+	padding: 0 26px;
+	line-height: var(--vscode-markdown-line-height, 22px);
+	word-wrap: break-word;
+}
+
+#code-csp-warning {
+	position: fixed;
+	top: 0;
+	right: 0;
+	color: white;
+	margin: 16px;
+	text-align: center;
+	font-size: 12px;
+	font-family: sans-serif;
+	background-color:#444444;
+	cursor: pointer;
+	padding: 6px;
+	box-shadow: 1px 1px 1px rgba(0,0,0,.25);
+}
+
+#code-csp-warning:hover {
+	text-decoration: none;
+	background-color:#007acc;
+	box-shadow: 2px 2px 2px rgba(0,0,0,.25);
+}
+
+body.scrollBeyondLastLine {
+	margin-bottom: calc(100vh - 22px);
+}
+
+body.showEditorSelection .code-line {
+	position: relative;
+}
+
+body.showEditorSelection .code-active-line:before,
+body.showEditorSelection .code-line:hover:before {
+	content: "";
+	display: block;
+	position: absolute;
+	top: 0;
+	left: -12px;
+	height: 100%;
+}
+
+body.showEditorSelection li.code-active-line:before,
+body.showEditorSelection li.code-line:hover:before {
+	left: -30px;
+}
+
+.vscode-light.showEditorSelection .code-active-line:before {
+	border-left: 3px solid rgba(0, 0, 0, 0.15);
+}
+
+.vscode-light.showEditorSelection .code-line:hover:before {
+	border-left: 3px solid rgba(0, 0, 0, 0.40);
+}
+
+.vscode-light.showEditorSelection .code-line .code-line:hover:before {
+	border-left: none;
+}
+
+.vscode-dark.showEditorSelection .code-active-line:before {
+	border-left: 3px solid rgba(255, 255, 255, 0.4);
+}
+
+.vscode-dark.showEditorSelection .code-line:hover:before {
+	border-left: 3px solid rgba(255, 255, 255, 0.60);
+}
+
+.vscode-dark.showEditorSelection .code-line .code-line:hover:before {
+	border-left: none;
+}
+
+.vscode-high-contrast.showEditorSelection .code-active-line:before {
+	border-left: 3px solid rgba(255, 160, 0, 0.7);
+}
+
+.vscode-high-contrast.showEditorSelection .code-line:hover:before {
+	border-left: 3px solid rgba(255, 160, 0, 1);
+}
+
+.vscode-high-contrast.showEditorSelection .code-line .code-line:hover:before {
+	border-left: none;
+}
+
+img {
+	max-width: 100%;
+	max-height: 100%;
+}
+
+a {
+	text-decoration: none;
+}
+
+a:hover {
+	text-decoration: underline;
+}
+
+a:focus,
+input:focus,
+select:focus,
+textarea:focus {
+	outline: 1px solid -webkit-focus-ring-color;
+	outline-offset: -1px;
+}
+
+hr {
+	border: 0;
+	height: 2px;
+	border-bottom: 2px solid;
+}
+
+h1 {
+	padding-bottom: 0.3em;
+	line-height: 1.2;
+	border-bottom-width: 1px;
+	border-bottom-style: solid;
+}
+
+h1, h2, h3 {
+	font-weight: normal;
+}
+
+table {
+	border-collapse: collapse;
+}
+
+table > thead > tr > th {
+	text-align: left;
+	border-bottom: 1px solid;
+}
+
+table > thead > tr > th,
+table > thead > tr > td,
+table > tbody > tr > th,
+table > tbody > tr > td {
+	padding: 5px 10px;
+}
+
+table > tbody > tr + tr > td {
+	border-top: 1px solid;
+}
+
+blockquote {
+	margin: 0 7px 0 5px;
+	padding: 0 16px 0 10px;
+	border-left-width: 5px;
+	border-left-style: solid;
+}
+
+code {
+	font-family: Menlo, Monaco, Consolas, "Droid Sans Mono", "Courier New", monospace, "Droid Sans Fallback";
+	font-size: 1em;
+	line-height: 1.357em;
+}
+
+body.wordWrap pre {
+	white-space: pre-wrap;
+}
+
+pre:not(.hljs),
+pre.hljs code > div {
+	padding: 16px;
+	border-radius: 3px;
+	overflow: auto;
+}
+
+pre code {
+	color: var(--vscode-editor-foreground);
+	tab-size: 4;
+}
+
+/** Theming */
+
+.vscode-light pre {
+	background-color: rgba(220, 220, 220, 0.4);
+}
+
+.vscode-dark pre {
+	background-color: rgba(10, 10, 10, 0.4);
+}
+
+.vscode-high-contrast pre {
+	background-color: rgb(0, 0, 0);
+}
+
+.vscode-high-contrast h1 {
+	border-color: rgb(0, 0, 0);
+}
+
+.vscode-light table > thead > tr > th {
+	border-color: rgba(0, 0, 0, 0.69);
+}
+
+.vscode-dark table > thead > tr > th {
+	border-color: rgba(255, 255, 255, 0.69);
+}
+
+.vscode-light h1,
+.vscode-light hr,
+.vscode-light table > tbody > tr + tr > td {
+	border-color: rgba(0, 0, 0, 0.18);
+}
+
+.vscode-dark h1,
+.vscode-dark hr,
+.vscode-dark table > tbody > tr + tr > td {
+	border-color: rgba(255, 255, 255, 0.18);
+}
+
+</style>
+
+<style>
+/* Tomorrow Theme */
+/* http://jmblog.github.com/color-themes-for-google-code-highlightjs */
+/* Original theme - https://github.com/chriskempson/tomorrow-theme */
+
+/* Tomorrow Comment */
+.hljs-comment,
+.hljs-quote {
+	color: #8e908c;
+}
+
+/* Tomorrow Red */
+.hljs-variable,
+.hljs-template-variable,
+.hljs-tag,
+.hljs-name,
+.hljs-selector-id,
+.hljs-selector-class,
+.hljs-regexp,
+.hljs-deletion {
+	color: #c82829;
+}
+
+/* Tomorrow Orange */
+.hljs-number,
+.hljs-built_in,
+.hljs-builtin-name,
+.hljs-literal,
+.hljs-type,
+.hljs-params,
+.hljs-meta,
+.hljs-link {
+	color: #f5871f;
+}
+
+/* Tomorrow Yellow */
+.hljs-attribute {
+	color: #eab700;
+}
+
+/* Tomorrow Green */
+.hljs-string,
+.hljs-symbol,
+.hljs-bullet,
+.hljs-addition {
+	color: #718c00;
+}
+
+/* Tomorrow Blue */
+.hljs-title,
+.hljs-section {
+	color: #4271ae;
+}
+
+/* Tomorrow Purple */
+.hljs-keyword,
+.hljs-selector-tag {
+	color: #8959a8;
+}
+
+.hljs {
+	display: block;
+	overflow-x: auto;
+	color: #4d4d4c;
+	padding: 0.5em;
+}
+
+.hljs-emphasis {
+	font-style: italic;
+}
+
+.hljs-strong {
+	font-weight: bold;
+}
+</style>
+
+<style>
+/*
+ * Markdown PDF CSS
+ */
+
+ body {
+	font-family: -apple-system, BlinkMacSystemFont, "Segoe WPC", "Segoe UI", "Ubuntu", "Droid Sans", sans-serif, "Meiryo";
+	padding: 0 12px;
+}
+
+pre {
+	background-color: #f8f8f8;
+	border: 1px solid #cccccc;
+	border-radius: 3px;
+	overflow-x: auto;
+	white-space: pre-wrap;
+	overflow-wrap: break-word;
+}
+
+pre:not(.hljs) {
+	padding: 23px;
+	line-height: 19px;
+}
+
+blockquote {
+	background: rgba(127, 127, 127, 0.1);
+	border-color: rgba(0, 122, 204, 0.5);
+}
+
+.emoji {
+	height: 1.4em;
+}
+
+code {
+	font-size: 14px;
+	line-height: 19px;
+}
+
+/* for inline code */
+:not(pre):not(.hljs) > code {
+	color: #C9AE75; /* Change the old color so it seems less like an error */
+	font-size: inherit;
+}
+
+/* Page Break : use <div class="page"/> to insert page break
+-------------------------------------------------------- */
+.page {
+	page-break-after: always;
+}
+
+</style>
+
+<script src="https://unpkg.com/mermaid/dist/mermaid.min.js"></script>
+</head>
+<body>
+  <script>
+    mermaid.initialize({
+      startOnLoad: true,
+      theme: document.body.classList.contains('vscode-dark') || document.body.classList.contains('vscode-high-contrast')
+          ? 'dark'
+          : 'default'
+    });
+  </script>
+<div dir="rtl">
+<h1 id="%D7%A4%D7%99%D7%AA%D7%95%D7%97-%D7%91%D7%A4%D7%99%D7%99%D7%AA%D7%95%D7%9F---%D7%94%D7%9B%D7%A0%D7%95%D7%AA-%D7%9C%D7%9E%D7%97%D7%A9%D7%91">פיתוח בפייתון - הכנות למחשב</h1>
+<p>כדי שנוכל לעבוד בפייתון יש כמה דברים שאנחנו צריכים להתקין ולוודא שהם עובדים על המחשב</p>
+<h2 id="%D7%A4%D7%99%D7%99%D7%AA%D7%95%D7%9F-%D7%A2%D7%A6%D7%9E%D7%95">פייתון עצמו</h2>
+<p>אנחנו צריכים להשיג את פייתון עצמו, שיידע בעצם לקרוא את התוכנות שלנו ולהריץ אותנו (עוד מידע על המנגנון הזה בהמשך הקורס). יש הרבה גרסאות עם כל מיני הרחבות שונות אבל הגרסא השימושית ביותר לנו היא כנראה אנקונדה (בהוצאת individual). אתם יכולים להוריד אותה בחינם לגמרי פה:</p>
+<p>https://www.anaconda.com/products/individual</p>
+<p>באתר עצמו לחצו על <strong>download</strong> ואתם תגיעו לאוסף של גרסאות שמתוכן תצטרכו לבחור אחת. בהנחה שאתם משתמשים ב-windows ושהמחשב שלכם נקנה ב-5 השנים האחרונות ומריץ windows 8 ומעלה, אתם כנראה צריכים את הגרסא שהיא 64bit.</p>
+<p><img src="./anaconda_installation.png" alt="install screenshot"></p>
+<p>אחרי שהקובץ ירד, אתם צריכים להתקין אותו עם הדגשים הבאים:</p>
+<ul>
+<li>במהלך ההתקנה אתם תישאלו האם להתקין את אנקונדה לכל המשתמשים או רק לכם, מוזמנים להתייעץ איתי על זה אבל בגדול זה תלוי במי שעוד משתמש במחשב הזה. אם רק אתם משתמשים במחשב הזה, מוזמנים להתקין עבור כל המשתמשים (all users) ולסגור עניין</li>
+<li>לגבי מקום ההתקנה - מוזמנים לשנות אם אתם צריכים, אבל רב הסיכויים שאין באמת צורך</li>
+<li>בחלון האחרון לפני הלוחצים על install ישנן שתי תיבות כאשר העליונה לא מסומנת והתחתונה כן. למטרות הקורס הזה יש לסמן את התיבה העליונה בנוסף לתחתונה (אולי הכתב יהיה באדום כשתעשו את זה). להסברים נוספים מוזמנים לפנות אליי.</li>
+<li>בסוף ההתקנה יופיע לכם מסך עם עוד שתי תיבות שבהן מסומן V. מוזמנים לבטל את ה-V-ים בשתי התיבות ולסיים את ההת'נה</li>
+</ul>
+<p>מזל טוב, התקנתם פייתון. כדי לבדוק שהוא עובד אתם מוזמנים לפתוח מסך cmd (אני אלמד איך לעשות את זה) ולהריץ את הפקודה</p>
+<div dir="ltr">
+<pre class="hljs"><code><div>python --version
+</div></code></pre>
+</div>
+<h2 id="%D7%A2%D7%95%D7%A8%D7%9A-%D7%98%D7%A7%D7%A1%D7%98-%D7%9B%D7%93%D7%99-%D7%9C%D7%AA%D7%9B%D7%A0%D7%AA-%D7%91%D7%95">עורך טקסט כדי לתכנת בו</h2>
+<p>תכנות הוא כתיבת קוד, שזה בעצם כתיבת מילים, אז אנחנו צריכים תוכנה שבה אפשר לכתוב קבצי טקסט פשוטים. בגדול לכולנו יש על המחשב את notepad שמאפשר לעשות את זה אבל הוא מאוד לא נוח, ובעולם היו קיימים עורכי טקסט שנועדו במיוחד לכתיבת קוד והם באים עם המון יתרונות (שאתם חלקם אנחנו נכיר). יתרון אחד שכזה הוא שהעורך מסמן את הטקסט בצבעים שונים כדי להדגיש מילים מסוימות שמעניינות אותנו יותר או פחות. יתרון שני הוא שהעורך מאפשר להריץ את התכונה שלנו ישירות מתוכו.</p>
+<p>עורך אחד מאוד פופולארי בעולם הזה הוא pycharm ואתם מוזמנים להוריד אותו מפה:
+https://www.jetbrains.com/pycharm/download</p>
+<p>ושם תבחרו להוריד את גרסת ה-community - זאת הגרסא החינמית והלא מוגבלת.
+אחרי הורדה אתם מוזמנים להתקין את התוכנה. אין דגשים מיוחדים להתקנה עצמה.
+אחרי ההתקנו תפעילו את pycharm, אשרו את תנאי ההפעלה ואתם תגיעו למסך הזה:</p>
+<p><img src="./pycharm_ui.png" alt="pycharm_ui"></p>
+<p>שבו תצטרכו לבחור האם אתם רוצים את הגרסא הכהה או הבהירה של התכונה. תבחרו מה שנוח, אפשר לשנות את זה אחר כך. ואחרי זה לחצו על הכפתור בצד שמאל למטה, כדי לא להתחיל להתעסק בכל מיני רכיבים שונים של התכונה שא רלוונטיים בשלב זה.</p>
+<h3 id="%D7%90%D7%A4%D7%A9%D7%A8%D7%99%D7%95%D7%AA-%D7%90%D7%97%D7%A8%D7%99%D7%95%D7%AA"><strong>אפשריות אחריות</strong></h3>
+<p>ישנם הרבה עורכים אחרים שמתאימים לפייתון, אני לדוגמא מאוד אוהב את vsCode מכל מיני סיבות, אבל מה שהופך את העורך הזה לעורך שמאוד טוב למפתח מנוסה זה בדיוק הדבר שהופך אותו למעצבן ולא נוח למפתחים חדשים, ולכן אני מציע לכם להתחיל ב-pycharm ובהמשך הקורס אם תרצו ותחליטו שזה חשוב לכם, אני אעזור לכם לעבור לעורכים אחרים.</p>
+</div>
+</body>
+</html>
