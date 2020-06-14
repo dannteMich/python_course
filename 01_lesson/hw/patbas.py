@@ -19,14 +19,29 @@ if player1_input == player2_input:
 # All 6 winning conditions
 if player1_input == 'S' and player2_input == 'P':
     print("Player 1 wins!!!")
+    exit()
 
 if player1_input == 'P' and player2_input == 'R':
     print("Player 1 wins!!!")
+    exit()
 
 if player1_input == 'R' and player2_input == 'S':
     print("Player 1 wins!!!")
+    exit()
 
 # actually, Now I know for sure that the second player has won. Do you understand why?
 print("Player 2 wins!!!")
+
+
+# if you know elif we can do
+
+# if player1_input == 'S' and player2_input == 'P':
+#     print("Player 1 wins!!!")
+# elif player1_input == 'P' and player2_input == 'R':
+#     print("Player 1 wins!!!")
+# elif player1_input == 'R' and player2_input == 'S':
+#     print("Player 1 wins!!!")
+# else:
+#     print("Player 2 wins!!!")
 
 
