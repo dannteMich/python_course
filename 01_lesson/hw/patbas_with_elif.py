@@ -16,18 +16,13 @@ if player1_input == player2_input:
     print("It's a tie!!!")
 
 
-# Winning conditions
 if player1_input == 'S' and player2_input == 'P':
     print("Player 1 wins!!!")
-    exit()
-
-if player1_input == 'P' and player2_input == 'R':
+elif player1_input == 'P' and player2_input == 'R':
     print("Player 1 wins!!!")
-    exit()
-
-if player1_input == 'R' and player2_input == 'S':
+elif player1_input == 'R' and player2_input == 'S':
     print("Player 1 wins!!!")
-    exit()
+else:
+    print("Player 2 wins!!!")
 
-# actually, Now I know for sure that the second player has won. Do you understand why?
-print("Player 2 wins!!!")
+
