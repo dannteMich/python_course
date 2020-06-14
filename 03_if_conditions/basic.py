@@ -25,3 +25,16 @@ if outer_color == "green" and inner_color == "red":
 # I can add parantheses for complex conditions to be clear
 if (color == "green") or (color == "brown"):
     print("You might be a tree")
+
+
+condition = 3 > 4
+
+if condition:
+     # if the condition is True
+    print("inside the if!!!")
+
+else:
+    # the condition is false
+    print("In the else") 
+
+print("out of the if") # this will run in any case
