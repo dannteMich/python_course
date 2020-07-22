@@ -5,3 +5,6 @@ if number >= 10 and number <= 99:
     print("This is a 2-digit number!!!")
 else:
     print("This is not a 2-digit number")
+
+if x > 3 and x < 10:
+    print("Do something")
