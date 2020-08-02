@@ -13,4 +13,4 @@ while guess != target_number:
 
     guess = int(input("what is your next guess"))
 
-print("Correct! the numver is", target_number)
+print("Correct! the number is", target_number)
